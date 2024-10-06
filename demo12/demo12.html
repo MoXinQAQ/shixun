@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="demo12.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>demo12</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <ul class="shopping">
+            <li class="item" v-for="(shop,index) in shops">
+                <input type="checkbox" v-model="shop.checked" class="checkbox">
+                <img :src="shop.url">
+                <div class="information">
+                    <div class="information_top">
+                        <span>商品名称：{{ shop.name }}</span>
+                    </div>
+                    <div class="information_bottom">
+                        <span>价格：{{ shopprice(index) }}</span>
+                        <span>数量：</span>
+                        <button @click="jia(index)">+</button>
+                        <input type="text" v-model="shop.num" @input="denum(index)">
+                        <button @click="jian(index)">-</button>
+                    </div>
+                </div>
+                <button @click="delshop(index)" class="delshop">x</button>
+            </li>
+            <li>
+                <span class="allprice">总价格：{{ allprice }}</span>
+            </li>
+        </ul>
+    </div>
+
+
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    shops: [
+                        {
+                            name: 'ps5',
+                            price: 2100,
+                            num: 1,
+                            url: 'https://img14.360buyimg.com/n7/jfs/t1/244904/17/19924/78422/66f4c51eF3e9c29c9/2b54665982ecf49a.jpg',
+                            checked: false
+                        },
+                        {
+                            name: 'iqoo 12',
+                            price: 3999,
+                            num: 1,
+                            url: 'https://img13.360buyimg.com/n7/jfs/t1/218386/3/41255/58032/6660134bF36342dd7/85f4e720873e17b6.png.avif',
+                            checked: false
+                        }
+                    ]
+                }
+            },
+
+            computed: {
+                allprice() {
+                    let apc = 0, i;
+                    for (i = 0; i < this.shops.length; i++) {
+                        if (this.shops[i].checked) {
+                            apc = this.shops[i].price * this.shops[i].num + apc;
+                        }
+                    }
+                    return apc
+                }
+            },
+
+            methods: {
+                jia(index) {
+                    this.shops[index].num++;
+                },
+
+                jian(index) {
+                    this.shops[index].num--;
+                    if (this.shops[index].num < 1) {
+                        this.shops[index].num = 1;
+                    }
+                },
+
+                //验证是否为数字并大于等于0
+                denum(index) {
+                    let num = parseInt(this.shops[index].num);
+                    if (typeof (num) === "number" && num >= 1) {
+                        this.shops[index].num = num;
+                    } else {
+                        this.shops[index].num = 1;
+                    }
+                },
+
+                delshop(index) {
+                    this.shops.splice(index, 1);
+                },
+
+                shopprice(index){
+                    return this.shops[index].num * this.shops[index].price;
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+
+</html>

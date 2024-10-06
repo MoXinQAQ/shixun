@@ -1,0 +1,90 @@
+@charset "UTF-8";
+
+#app{
+    width: 800px;
+    background: rgba(232, 232, 232, 0.825);
+    margin: 0 auto;
+}
+
+.shopping{
+    list-style-type: none;
+    padding: 0;
+}
+
+.item{
+    width: 780px;
+    height: 120px;
+    padding: 5px 10px;
+    border-bottom: 1px solid gainsboro;
+    position: relative;
+}
+
+.item img{
+    width: 100px;
+    height: 100px;
+    padding: 10px 0 0 50px;
+}
+
+.checkbox{
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 52px;
+    left: 15px;
+}
+
+.information{
+    width: 500px;
+    height: 90px;
+    position: absolute;
+    top: 20px;
+    left: 200px;
+}
+
+.information_top{
+    width: 500px;
+    height: 65px;
+}
+
+.information_top span{
+    color: rgb(150, 150, 150);
+    font-size: 14px;
+}
+
+.information_bottom{
+    width: 500px;
+    height: 25px;
+}
+
+.information input{
+    width: 20px;
+    height: 15px;
+}
+
+.information button{
+    width: 20px;
+    height: 20px;
+}
+
+.information span{
+    padding-left: 20px;
+}
+
+.information_bottom span:first-child{
+    color: rgb(255, 120, 48);
+}
+
+.delshop{
+    font-size: 18px;
+    border: 0;
+    background: rgba(232, 232, 232, 0.825);
+    position: absolute;
+    top: 50px;
+    right: 50px;
+}
+
+.allprice{
+    font-size: 20px;
+    color: rgb(255, 120, 48);
+}
+

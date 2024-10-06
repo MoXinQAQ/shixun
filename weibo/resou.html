@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="resou.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../jquery-3.7.1.js"></script>
+    <title>微博热搜榜</title>
+</head>
+
+<body>
+    <div class="right" id="right">
+        <ul class="bang">
+            <li>
+                <span class="first">序号</span>
+                <span class="second">关键词</span>
+            </li>
+            <li v-for="(re,index) in res" :key="re.id">
+                <span class="first">{{ index+1 }}</span>
+                <div class="main">
+                    <a :href="re.url"><span class="second">{{ re.name }}</span></a>
+                    <span class="third">{{ re.hot }}</span>
+                </div>
+                <span class="fourth" :style="{color:setcolor(re.hot)}">{{ settext(re.hot) }}</span>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    res: [],
+                }
+            },
+
+            methods: {
+                setcolor(hot) {
+                    if (hot > 0 && hot < 300000) {
+                        return 'blue'
+                    } else if (hot < 500000 && hot > 300000) {
+                        return 'orange'
+                    } else {
+                        return 'red'
+                    }
+                },
+
+                settext(hot) {
+                    if (hot > 0 && hot < 300000) {
+                        return '新'
+                    } else if (hot < 500000 && hot > 300000) {
+                        return '暖'
+                    } else {
+                        return '热'
+                    }
+                }
+            }
+        }).mount('#right');
+
+        $.ajax({
+            url: "https://tenapi.cn/v2/weibohot",
+            success: function (ret) {
+                ret = JSON.parse(ret);
+                app.res = ret.data;
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+.body_main{
+    background: gainsboro;
+    height: 800px;
+}
+
+.body_1{
+    width: 1226px;
+    height: 460px;
+    margin: 0 auto;
+}
+
+.title{
+    width: 1226px;
+    height: 40px;
+    position: relative;
+}
+
+.righthref{
+    position: absolute;
+    right: 0;
+}
+
+
+.main{
+    width: 1226px;
+    height: 400px;
+}
+
+.main_1{
+    display: none;
+    background: red;
+    width: 1226px;
+    height: 400px;
+}
+
+.main_2{
+    display: none;
+    background: green;
+    width: 1226px;
+    height: 400px;
+}
+
+.active{
+    display: block;
+}
+
+
+
+
+
+

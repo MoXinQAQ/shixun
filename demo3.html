@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--get是将携带的参数以字符串拼接，post比较安全-->
+    <form action="admin.php" method="post">
+        <input type="text"> <!--文本-->
+        <input type="password"> <!--密码-->
+        <input type="button" value="按钮"> <!--按钮-->
+        <button>普通按钮</button>
+        <input type="submit" value="提交"> <!--提交按钮-->
+        <input type="datetime-local">
+        <br>
+        <!--单选框-->
+        <input type="radio" value="男" name="sex">男
+        <input type="radio" value="女" name="sex">女
+        <br>
+        <!--复选框-->
+        <input type="checkbox">吃
+        <input type="checkbox">喝
+        <input type="checkbox">玩
+        <input type="checkbox">乐
+        <!--下拉列表-->
+        <select>
+            <option value="太原">太原</option>
+            <option value="吕梁">吕梁</option>
+        </select>
+        <!--文本域-->
+        <textarea name="" id="" cols="50" rows="10" placeholder="自我介绍"></textarea>
+    </form>
+</body>
+
+</html>

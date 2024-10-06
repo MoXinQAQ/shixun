@@ -1,0 +1,16 @@
+        <div class="body_main_body2">
+            <div class="body_main_title2">
+                <h2>智能穿戴</h2>
+                <ul>
+                    <li>耳机</li>
+                    <li>穿戴</li>
+                </ul>
+            </div>
+            <div class="body_main_picture2">
+                <div class="body_main_picture2_left">
+                    <a href=""><img src="./imagins/body/body2/1.webp" alt=""></a>
+                </div>
+                <div class="body_main_picture2_right_1"></div>
+                <div class="body_main_picture2_right_2"></div>
+            </div>
+        </div>

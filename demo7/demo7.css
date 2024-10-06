@@ -1,0 +1,109 @@
+@charset "UTF-8";
+
+/* 动画
+@keyframes myAnim{
+    from{
+
+    }
+    to{
+        
+    }
+} */
+
+
+/* 媒体查询，可以用于响应式布局、低分辨率隐藏次要元素、调整字体或图片的大小
+.box{
+    width: 300px;
+    height: 300px;
+}
+
+@media screen and (max-width:768px) {
+    .box{
+        background: black;
+    }
+}
+@media screen and (min-width:768px) and (max-width:996px) {
+    .box{
+        background: red;
+    }
+}
+@media screen and (min-width:996px) {
+    .box{
+        background: aqua;
+    }
+} */
+
+
+.home{
+    width: 1226px;
+    height: 460px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.carousel-images{
+    width: 1226px;
+    height: 460px;
+}
+
+.home_img{
+    width: 1226px;
+    height: 460px;
+}
+
+.left{
+    width: 260px;
+    height: 460px;
+    background: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.prev{
+    width: 50px;
+    height: 100px;
+    background: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 180px;
+    left: 260px;
+    font-size: 40px;
+    color: gainsboro;
+    border: 0;
+}
+
+.next{
+    width: 50px;
+    height: 100px;
+    background: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 180px;
+    right: 0px;
+    font-size: 40px;
+    color: gainsboro;
+    border: 0;
+}
+
+.indicators{
+    width: 95px;
+    height: 20px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+.dot{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: 2px solid #fff;
+    border-color: hsla(0, 0%, 100%, .3);
+    border-radius: 100px;
+    background: rgba(0, 0, 0, .4);
+    opacity: 1;
+}    
+
+.active{
+    background: #fff;
+    border: 2px solid rgba(0, 0, 0, .4);
+}

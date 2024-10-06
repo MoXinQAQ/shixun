@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="demo13.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../jquery-3.7.1.js"></script>
+    <title>demo13</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="date" v-model.lazy="birthday" title="请选择您的出生日期">
+        <ul>
+            <li v-for="(constellation,index) in constellations" :key="index">
+                <span>{{ constellation.type }}:{{constellation.content}}</span>
+            </li>
+        </ul>
+    </div>
+
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    birthday: '',
+                    constellations: []
+                }
+            },
+
+            methods: {
+                getconstellations(newBirthday) {
+
+                    let date = new Date(newBirthday);
+                    let getAstro = this.decideAstro(date);
+                    console.log(getAstro);
+
+                    $.ajax({
+                        url: 'https://apis.tianapi.com/star/index',
+                        data: `key=719218bb7d9159b3fcd86f3dbe698a07&astro=${getAstro}`,
+                        success: (data) => {
+                            console.log(data);
+                            this.constellations = data.result.list;
+                        }
+                    });
+                },
+
+                decideAstro(newBirthday) {
+                    let astros = [
+                        { start: '01-01', end: '01-19', id: '摩羯座' },
+                        { start: '01-20', end: '02-18', id: '水瓶座' },
+                        { start: '02-19', end: '03-20', id: '双鱼座' },
+                        { start: '03-21', end: '04-19', id: '白羊座' },
+                        { start: '04-20', end: '05-20', id: '金牛座' },
+                        { start: '05-21', end: '06-21', id: '双子座' },
+                        { start: '06-22', end: '07-22', id: '巨蟹座' },
+                        { start: '07-23', end: '08-22', id: '狮子座' },
+                        { start: '08-23', end: '09-22', id: '处女座' },
+                        { start: '09-23', end: '10-23', id: '天秤座' },
+                        { start: '10-24', end: '11-22', id: '天蝎座' },
+                        { start: '11-23', end: '12-21', id: '射手座' },
+                        { start: '12-22', end: '12-31', id: '摩羯座' },
+                    ];
+
+                    for (let astro of astros) {
+                        let startDate = new Date(`${newBirthday.getFullYear()}-${astro.start}`);
+                        let endDate = new Date(`${newBirthday.getFullYear()}-${astro.end}`);
+
+                        if (newBirthday >= startDate && newBirthday <= endDate) {
+                            return astro.id;
+                        }
+                    }
+                },
+            },
+
+            watch: {
+                birthday(newBirthday) {
+                    this.getconstellations(newBirthday);
+                }
+            },
+        }).mount('#app');
+    </script>
+</body>
+
+</html>

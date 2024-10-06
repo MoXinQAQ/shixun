@@ -1,0 +1,19 @@
+
+
+#one{
+    width: 100px;
+    height: 30px;
+}
+
+#two{
+    width: 100px;
+    height: 30px;
+}
+
+#three{
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    border: 1px solid black;
+}
+
